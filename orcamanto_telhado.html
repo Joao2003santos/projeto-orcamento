@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Mobile</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header class="cabecalho">
+    <h1>Orçamento de Piscina</h1>
+    <a href="index.html"><img src="imagens/home.svg" alt=""></a>
+  </header>
+
+  <form class="formulario" onsubmit="event.preventDefault(); multiplicar();">
+    <label>
+      Largura
+      <input type="number" id="largura2" required>
+    </label>
+
+    <label>
+      Comprimento
+      <input type="number"  id="comprimento2" required>
+    </label>
+
+    <label for="">
+      &nbsp;
+      <input class="btn" type="submit" value="Calcular">
+    </label>
+
+  </form>
+
+  <fieldset>
+    <legend>
+      Resultado
+    </legend>
+
+    <div id="res2">
+      Insira os dados acima e clique em calcular.
+    </div>
+  </fieldset>
+
+
+  <script>
+
+
+    function multiplicar() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+      if (area_total <= 50 && area_total > 20) {
+        multiplicar50Menos();
+
+      } else if (area_total <= 20) {
+        multiplicar20Menos();
+
+      } else {
+        multiplicar50Mais();
+      }
+
+
+    }
+
+
+    function multiplicar50Menos() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+
+      const manta3mmDesc = 530
+      const manta3mmAlum = 602
+      const manta2mmMorpl = 610
+      const plastipegante = 392
+      const diplas = 93
+      const texsapSemi = 73
+      const texsapFlex = 215
+      const texsapSuper = 240
+      const maoDeObra = 42
+
+
+
+
+      
+      // Área com manta 3mm Desc
+      var ond = area_total * 0.3
+      var qtdMantaMorplava = (area_total + ond) * 1.15 / 10
+      var qtdPlastipegante = qtdMantaMorplava / 10
+      var totalprod = qtdMantaMorplava * manta2mmMorpl + qtdPlastipegante * plastipegante
+      var totalMaodeObra =  maoDeObra * 1.3
+      var totalOrcamento = totalprod + totalMaodeObra
+      res2.innerHTML = `A área deu  Total de ${area_total} m2 </p> <p> Irá utilizar: </p> ${qtdMantaMorplava} rolos de Morplava Alumínio 2 mm</p> <p> ${qtdPlastipegante} baldes de Plastipegante</p> <p> Total de produtos R$ ${totalprod} </p> <p>Mão de obra R$ ${totalMaodeObra}</p> Total de R$${totalOrcamento}</p>`
+
+
+
+    }
+
+
+    function multiplicar50Mais() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+      const manta3mmDesc = 358.25
+      const manta3mmAlum = 402.31
+      const manta2mmMorpl = 414.76
+      const plastipegante = 266.41
+      const diplas = 61.85
+      const texsapSemi = 73
+      const texsapFlex = 215
+      const texsapSuper = 240
+      const maoDeObra = 42
+
+
+
+      // Área com manta 3mm Desc
+      var ond = area_total * 0.3
+      var qtdMantaMorplava = Math.ceil((area_total + ond) * 1.15 / 10)
+      var qtdPlastipegante = Math.ceil (qtdMantaMorplava / 10)
+      var totalprod = qtdMantaMorplava * manta2mmMorpl + qtdPlastipegante * plastipegante
+      var totalMaodeObra =  maoDeObra * area_total
+      var totalOrcamento = totalprod + totalMaodeObra
+      res2.innerHTML = `A área deu  Total de ${area_total} m2 </p> <p> Irá utilizar: </p> ${qtdMantaMorplava} rolos de Morplava Alumínio 2 mm</p> <p> ${qtdPlastipegante} baldes de Plastipegante</p> <p> Total de produtos R$ ${totalprod} </p> <p>Mão de obra R$ ${totalMaodeObra}</p> Total de R$${totalOrcamento}</p>`
+
+
+
+
+    }
+
+    function multiplicar20Menos() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+
+      const manta3mmDesc = 530
+      const manta3mmAlum = 602
+      const manta2mmMorpl = 610
+      const plastipegante = 392
+      const diplas = 93
+      const texsapSemi = 73
+      const texsapFlex = 215
+      const texsapSuper = 240
+      const maoDeObra = 800
+
+
+
+
+      // Área com manta 3mm Desc
+      var ond = area_total * 0.3
+      var qtdMantaMorplava = (area_total + ond) * 1.15 / 10
+      var qtdPlastipegante = qtdMantaMorplava / 10
+      var totalprod = qtdMantaMorplava * manta2mmMorpl + qtdPlastipegante * plastipegante
+      var totalMaodeObra =  maoDeObra * 1.3
+      var totalOrcamento = totalprod + totalMaodeObra
+      res2.innerHTML = `A área deu  Total de ${area_total} m2 </p> <p> Irá utilizar: </p> ${qtdMantaMorplava} rolos de Morplava Alumínio 2 mm</p> <p> ${qtdPlastipegante} baldes de Plastipegante</p> <p> Total de produtos R$ ${totalprod} </p> <p>Mão de obra R$ ${totalMaodeObra}</p> Total de R$${totalOrcamento}</p>`
+
+
+
+    }
+
+
+
+  </script>
+</body>
+
+</html>

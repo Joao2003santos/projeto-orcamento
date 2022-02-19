@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap');
+
+:root {
+  --primary:#629DD3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  margin: 100px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu img {
+  height: 170px;
+  width: 170px;
+  border-radius: 90px;
+  object-fit: cover;
+  margin: 25px;
+}
+
+.menu a:hover {
+  transform: scale(1.35);
+}
+
+.menu a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.cabecalho {
+  padding: 30px;
+  background-color: var(--primary);
+  color: white;
+  text-transform: uppercase;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cabecalho a img {
+  height: 35px;
+  filter: invert(1);
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+
+
+
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+input, .btn, select {
+  height: 40px;
+  padding: 5px 12px;
+  margin-top: 10px;
+}
+
+.btn {
+  color: #fff;
+  background-color: var(--primary);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+fieldset {
+  margin: 0 30px 30px 30px;
+  padding: 30px;
+}
+
+legend {
+  padding: 0 10px;
+}
