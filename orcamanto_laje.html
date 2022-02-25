@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Mobile</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Calculadora de Orçamentos</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -29,8 +29,8 @@
     <label>
       Tipo
       <select name="" id="tipo">
-        <option value="1.10">Normal</option>
-        <option value="1.15">Laje</option>
+        <option value="exposta">Exposta</option>
+        <option value="protegida">Protegida</option>
       </select>
     </label>
 
@@ -63,21 +63,35 @@
       var c1 = Number(med2.value)
       var area_total = l1 * c1
 
-      if (area_total <= 49 && area_total > 20) {
-        multiplicar50Menos();
+      if(tipo.value == "exposta"){
+        if(area_total <= 20){
+          multiplicar20MenosExposta();
+        }
+        if(area_total > 20 && area_total < 50){
+          multiplicar50MenosExposta();
+        }
+        if(area_total > 50){
+          multiplicar50MaisExposta();
+        }
+      }
 
-      } else if (area_total <= 20) {
-        multiplicar20Menos();
-
-      } else {
-        multiplicar50Mais();
+      if(tipo.value == "protegida"){
+        if(area_total <= 20){
+          multiplicar20MenosProtegida();
+        }
+        if(area_total > 20 && area_total < 50){
+          multiplicar50MenosProtegida();
+        }
+        if(area_total > 50){
+          multiplicar50MaisProtegida();
+        }
       }
 
 
     }
 
 
-    function multiplicar50Menos() {
+    function multiplicar50MenosProtegida() {
       var med1 = window.document.getElementById('largura2')
       var med2 = window.document.getElementById('comprimento2')
       var l1 = Number(med1.value)
@@ -127,7 +141,105 @@
     }
 
 
-    function multiplicar50Mais() {
+    function multiplicar50MenosExposta() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+
+      const manta3mmDesc = 530
+      const manta3mmAlum = 602
+      const manta2mmMorpl = 610
+      const plastipegante = 392
+      const diplas = 93
+      const texsapSemi = 73
+      const texsapFlex = 215
+      const texsapSuper = 240
+      const maoDeObra = 42
+
+
+
+
+     // Área com manta 3mm Desc
+     var qtdMantaMorter = (area_total * 1.15 / 7)
+      var qtdPlastipegante = qtdMantaMorter / 10
+      var qtdDiplas = qtdMantaMorter / 10
+      var totalprod = qtdMantaMorter * manta3mmAlum + qtdPlastipegante * plastipegante 
+      var totalMaodeObra = area_total * maoDeObra
+      var totalOrcamento = totalprod + totalMaodeObra
+      var totalMaodeObraFprmatado = totalMaodeObra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalProdFormatado = totalMaodeObra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalOrcamentoFormatado = totalOrcamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var qtdman = qtdMantaMorter.toFixed(2)
+      var qtdPl = qtdPlastipegante.toFixed(2)
+      var qtdDi = qtdDiplas.toFixed(2)
+      var totalVlManta = qtdMantaMorter * manta3mmAlum
+      var totalVlPlastipegante = qtdPlastipegante * plastipegante
+      var totalVlDiplas = qtdDiplas * diplas
+      var totalVlMantaform = totalVlManta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalVlPlastipeganteform = totalVlPlastipegante.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalVlDiplasform = totalVlDiplas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+      res2.innerHTML = `A área deu  Total de ${area_total} m2 </p> <p> Irá utilizar: </p> ${qtdman} rolos de Morteplas Alumínio 3 mm ${totalVlMantaform}</p> <p> ${qtdPl} baldes de Plastipegante ${totalVlPlastipeganteform}</p>  <p> Total de produtos  ${totalProdFormatado} </p> <p>Mão de obra ${totalMaodeObraFprmatado}</p> Total de ${totalOrcamentoFormatado}</p>`
+
+
+
+
+    }
+
+
+    function multiplicar20MenosExposta() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+
+      const manta3mmDesc = 530
+      const manta3mmAlum = 602
+      const manta2mmMorpl = 610
+      const plastipegante = 392
+      const diplas = 93
+      const texsapSemi = 73
+      const texsapFlex = 215
+      const texsapSuper = 240
+      const maoDeObra = 800
+
+
+
+
+     // Área com manta 3mm Desc
+     var qtdMantaMorter = (area_total * 1.15 / 7)
+      var qtdPlastipegante = qtdMantaMorter / 10
+      var qtdDiplas = qtdMantaMorter / 10
+      var totalprod = qtdMantaMorter * manta3mmAlum + qtdPlastipegante * plastipegante 
+      var totalMaodeObra = maoDeObra
+      var totalOrcamento = totalprod + totalMaodeObra
+      var totalMaodeObraFprmatado = totalMaodeObra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalProdFormatado = totalMaodeObra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalOrcamentoFormatado = totalOrcamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var qtdman = qtdMantaMorter.toFixed(2)
+      var qtdPl = qtdPlastipegante.toFixed(2)
+      var qtdDi = qtdDiplas.toFixed(2)
+      var totalVlManta = qtdMantaMorter * manta3mmAlum
+      var totalVlPlastipegante = qtdPlastipegante * plastipegante
+      var totalVlDiplas = qtdDiplas * diplas
+      var totalVlMantaform = totalVlManta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalVlPlastipeganteform = totalVlPlastipegante.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalVlDiplasform = totalVlDiplas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+      res2.innerHTML = `A área deu  Total de ${area_total} m2 </p> <p> Irá utilizar: </p> ${qtdman} rolos de Morteplas Alumínio 3 mm ${totalVlMantaform}</p> <p> ${qtdPl} baldes de Plastipegante ${totalVlPlastipeganteform}</p>  <p> Total de produtos  ${totalProdFormatado} </p> <p>Mão de obra ${totalMaodeObraFprmatado}</p> Total de ${totalOrcamentoFormatado}</p>`
+
+
+
+    }
+
+    function multiplicar50MaisProtegida() {
       var med1 = window.document.getElementById('largura2')
       var med2 = window.document.getElementById('comprimento2')
       var l1 = Number(med1.value)
@@ -147,7 +259,7 @@
 
 
       // Área com manta 3mm Desc
-      var qtdMantaMorter = Math.ceil(area_total * tipo.value / 7)
+      var qtdMantaMorter = Math.ceil(area_total * 1.10 / 7)
       var qtdPlastipegante = Math.ceil(qtdMantaMorter / 10)
       var qtdDiplas = Math.ceil (qtdMantaMorter / 10)
       var totalprod = qtdMantaMorter * manta3mmDesc + qtdPlastipegante * plastipegante + qtdDiplas * diplas
@@ -173,7 +285,53 @@
 
     }
 
-    function multiplicar20Menos() {
+    function multiplicar50MaisExposta() {
+      var med1 = window.document.getElementById('largura2')
+      var med2 = window.document.getElementById('comprimento2')
+      var l1 = Number(med1.value)
+      var c1 = Number(med2.value)
+      var area_total = l1 * c1
+
+      const manta3mmDesc = 358.25
+      const manta3mmAlum = 402.31
+      const manta2mmMorpl = 414.76
+      const plastipegante = 266.41
+      const diplas = 61.85
+      const texsapSemi = 73
+      const texsapFlex = 215
+      const texsapSuper = 240
+      const maoDeObra = 42
+
+
+
+      // Área com manta 3mm Desc
+      var qtdMantaMorter = Math.ceil(area_total * 1.15 / 7)
+      var qtdPlastipegante = Math.ceil(qtdMantaMorter / 10)
+      var qtdDiplas = Math.ceil (qtdMantaMorter / 10)
+      var totalprod = qtdMantaMorter * manta3mmAlum + qtdPlastipegante * plastipegante 
+      var totalMaodeObra = area_total * maoDeObra
+      var totalOrcamento = totalprod + totalMaodeObra
+      var totalMaodeObraFprmatado = totalMaodeObra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalProdFormatado = totalMaodeObra.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalOrcamentoFormatado = totalOrcamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var qtdman = qtdMantaMorter.toFixed(2)
+      var qtdPl = qtdPlastipegante.toFixed(2)
+      var qtdDi = qtdDiplas.toFixed(2)
+      var totalVlManta = qtdMantaMorter * manta3mmAlum
+      var totalVlPlastipegante = qtdPlastipegante * plastipegante
+      var totalVlDiplas = qtdDiplas * diplas
+      var totalVlMantaform = totalVlManta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalVlPlastipeganteform = totalVlPlastipegante.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      var totalVlDiplasform = totalVlDiplas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+      res2.innerHTML = `A área deu  Total de ${area_total} m2 </p> <p> Irá utilizar: </p> ${qtdman} rolos de Morteplas Alumínio 3 mm ${totalVlMantaform}</p> <p> ${qtdPl} baldes de Plastipegante ${totalVlPlastipeganteform}</p>  <p> Total de produtos  ${totalProdFormatado} </p> <p>Mão de obra ${totalMaodeObraFprmatado}</p> Total de ${totalOrcamentoFormatado}</p>`
+
+
+
+    }
+
+    function multiplicar20MenosProtegida() {
       var med1 = window.document.getElementById('largura2')
       var med2 = window.document.getElementById('comprimento2')
       var l1 = Number(med1.value)
